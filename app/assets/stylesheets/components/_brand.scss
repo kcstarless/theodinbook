@@ -1,0 +1,16 @@
+.brand {
+    float: left;
+    text-transform: uppercase;
+    font-size: var(--font-size-xl);
+      
+    a,
+    a:visited {
+      color: var(--color-primary);
+    }
+  }
+
+  .logo {
+    float: left;
+    padding-right: 10px;
+  }
+  

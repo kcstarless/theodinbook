@@ -1,0 +1,17 @@
+.navbar {
+    width: 100%;
+    padding-right: var(--space-xs);
+    padding-left: var(--space-xs);
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-s);
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-navbar);
+    // border: var(--border-dark);
+  
+    @include media(tabletAndUp) {
+      padding-right: var(--space-m);
+      padding-left: var(--space-m);
+      max-width: 50rem;
+    }
+}
