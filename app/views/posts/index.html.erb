@@ -1,4 +1,8 @@
 <main class="container">
-    Odinbook adfadf
-    <%# <div class="header"><h1>Odinbook</h1></div> %>
+    <div class="header">
+        <h1>Posts</h1>
+        <%= link_to "New post", new_post_path, class: "btn btn--secondary" %>
+    </div>
+
+    <%= render @posts %>
 </main>

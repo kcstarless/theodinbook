@@ -1,0 +1,12 @@
+<div class="post">
+    <%= link_to post.title, post_path(post) %>
+    <div class="post_actions">
+        <%= button_to "Delete",
+                        post_path(post),
+                        method: :delete,
+                        class: "btn btn--light" %>
+        <%= link_to "Edit",
+                        edit_post_path(post),
+                        class: "btn btn--light" %>
+    </div>
+</div>

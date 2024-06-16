@@ -29,9 +29,6 @@ SimpleForm.setup do |config|
     # You can also pass a string as f.input placeholder: "Placeholder"
     b.use :placeholder
 
-    b.use :label, class: "visually-hidden"
-    b.use :input, class: "form__input", error_class: "form__input--invalid"
-
     ## Optional extensions
     # They are disabled unless you pass `f.input EXTENSION_NAME => true`
     # to the input. If so, they will retrieve the values from the model
@@ -115,7 +112,7 @@ SimpleForm.setup do |config|
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil
 
-  # You can define the default class to be used on forms. Can be overridden
+  # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
   # config.default_form_class = nil
 

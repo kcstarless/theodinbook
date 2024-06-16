@@ -4,12 +4,13 @@
     padding-left: var(--space-xs);
     margin-left: auto;
     margin-right: auto;
-    background-color: var(--color-glint);
+
+    // background-color: var(--color-glint);
     // border: var(--border-dark);
   
     @include media(tabletAndUp) {
       padding-right: var(--space-m);
       padding-left: var(--space-m);
-      max-width: 50rem;
+      max-width: 45rem;
     }
   }

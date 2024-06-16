@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -42,6 +42,12 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def authenticate_user!
+    unless current_user
+      redirect_to new_user_session_path, alert: "You need to sign in to access this page"
+    end
+  end
 
   def set_post
     @post = Post.find(params[:id])

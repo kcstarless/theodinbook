@@ -38,8 +38,8 @@
     --color-primary:          hsl(0, 0%, 5%);
     --color-primary-rotate:   hsl(10, 73%, 54%);
     --color-primary-bg:       hsl(0, 85%, 96%);
-    --color-secondary:        hsl(101, 45%, 56%);
-    --color-secondary-rotate: hsl(120, 45%, 56%);
+    --color-secondary:        hsl(37, 70%, 64%);
+    --color-secondary-rotate: hsl(37, 70%, 64%);
     --color-tertiary:         hsl(49, 89%, 64%);
     --color-glint:            hsl(210, 100%, 82%);    
 
@@ -51,7 +51,7 @@
 
     // Border
     --border: solid 2px var(--color-light);
-    --border-dark: solid 1px var(--color-dark);
+    --border-dark: solid 2px var(--color-dark);
     --border-radius: 0.375rem;
 
     // Shadows

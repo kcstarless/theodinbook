@@ -4,9 +4,12 @@
     padding-left: var(--space-xs);
     margin-top: var(--space-l);
     margin-bottom: var(--space-s);
+    padding-bottom: var(--space-xxs);
     margin-left: auto;
     margin-right: auto;
     line-height: var(--line-height-navbar);
+    border-bottom: var(--border-dark);
+    
     // border: var(--border-dark);
   
     @include media(tabletAndUp) {

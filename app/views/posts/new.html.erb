@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+
+  <div class="header">
+    <h1>New post</h1>
+  </div>
+
+  <%= render "form", post: @post %>
+</main>
