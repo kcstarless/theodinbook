@@ -1,12 +1,13 @@
 <div class="post">
     <%= link_to post.title, post_path(post) %>
+    <%= link_to post.user.email %>
     <div class="post__actions">
-        <%= button_to "Delete",
+        <%= link_to "Delete",
                         post_path(post),
                         method: :delete,
-                        class: "btn btn--secondary" %>
+                        class: "btn" %>
         <%= link_to "Edit",
                         edit_post_path(post),
-                        class: "btn btn--secondary" %>
+                        class: "btn" %>
     </div>
 </div>

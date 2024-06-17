@@ -1,4 +1,4 @@
-<%= simple_form_for post, html: { data: {turbo: false}} do |f| %>
+<%= simple_form_for post do |f| %>
   <% if post.errors.any? %>
     <div class="error-message">
       <%= post.errors.full_messages.to_sentence.capitalize %>
