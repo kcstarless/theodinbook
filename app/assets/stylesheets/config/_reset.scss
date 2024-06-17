@@ -9,6 +9,11 @@
   padding: 0;
 }
 
+*:focus{
+  // outline: none;
+  // border: none;
+}
+
 html {
   overflow-y: scroll;
   height: 100%;
