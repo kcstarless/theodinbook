@@ -1,13 +1,12 @@
-<%= simple_form_for post, html: { class: "post form" } do |f| %>
+<%= simple_form_for post, html: { data: {turbo: false}} do |f| %>
   <% if post.errors.any? %>
     <div class="error-message">
       <%= post.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
-  <%= f.label :title %>
-  <%= f.input :title, input_html: { autofocus: true } %>
-  <%= f.label :body %>
-  <%= f.input :body %>
+  <%= f.input :title, input_html: { autofocus: true, class: 'title' } %>
+  <%= f.input :body, input_html: { class: 'body' } %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

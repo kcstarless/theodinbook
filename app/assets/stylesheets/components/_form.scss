@@ -3,19 +3,29 @@
     // flex-direction: column;
     flex-wrap: wrap;
     gap: var(--space-xs);
+
   
     &__group {
       flex: 1;
+      padding-bottom: var(--space-l)
     }
 
     &__label {
-      font-size: val(--font-size-xs);
+      font-size: var(--font-size-l);
+      // padding-left: var(--space-xs);
+    }
 
+    &__input.title {
+      width: 50%;
+    }
+
+    &__input.body {
+      height: 200px;
     }
 
     &__input {
       display: block;
-
+      
       width: 100%;
       max-width: 100%;
       padding: var(--space-xxs) var(--space-xs);
