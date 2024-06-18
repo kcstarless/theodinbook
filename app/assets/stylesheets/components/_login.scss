@@ -1,13 +1,30 @@
-.login {
-    // padding-top: 20px;
+.login-container {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
     // border: var(--border-dark);
+    display: grid;
+    gap: var(--space-xl);
+    grid-auto-flow: column;
+    justify-content: center;
+    
     h2 {
-        padding-top: var(--space-l);
+        // padding-top: var(--space-l);
         padding-bottom: var(--space-l);
     }
 
     .actions {
         padding-top: var(--space-s);
         padding-bottom: var(--space-s);
+    }
+
+    &--left {
+        align-self: center;
+        // border: var(--border-dark);
+    }
+    &--right {
+        align-self: center;
+        // display: flex;
+        // justify-content:space-around;
+        // border: var(--border-dark);
     }
 }
