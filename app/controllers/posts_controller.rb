@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    if params[:user_posts] == 'true'
+      @posts = current_user.posts
+    else
+      @posts = Post.all
+    end
   end
 
   def show

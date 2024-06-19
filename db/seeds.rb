@@ -29,7 +29,7 @@ p "created #{User.count} users"
 
 20.times do
   Post.create(title: Faker::Locations::Australia.location,
-              body: Faker::Quotes,
+              body: Faker::Lorem.paragraphs(number: 10, supplemental: false).join("\n\n"),
               user_id: User.all.sample.id)
 end
 

@@ -1,15 +1,18 @@
 .post {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   
-    gap: var(--space-s);
+    display: grid;
+    // justify-content: space-evenly;
+    grid-template-columns: 0.6fr 0.2fr 0.2fr;
+    align-items: end;
+
+    // border: var(--border-dark);
+    // gap: 15px 10px;
   
     background-color: var(--color-white);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-small);
     margin-bottom: var(--space-m);
-    padding: var(--space-xs);
+    // padding: var(--space-xs);
+
   
     @include media(tabletAndUp) {
       padding: var(--space-xs) var(--space-m);
@@ -20,5 +23,11 @@
       flex: 0 0 auto;
       align-self: flex-start;
       gap: var(--space-xs);
+    }
+
+    &__f1{
+      // border: var(--border-dark);
+      padding: var(--space-xs);
+      // vertical-align: middle;
     }
   }

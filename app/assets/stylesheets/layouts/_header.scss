@@ -9,6 +9,16 @@
     // border: var(--border-dark);
     
   
+    &__show {
+      // display: flex;
+      // display: inline-block;
+      // justify-self: end;
+      align-items: end;
+      padding-bottom: var(--space-xs);
+      // font-size: var(--font-size-xs);
+
+      border-bottom: var(--border-dark);
+    }
     @include media(tabletAndUp) {
       margin-bottom: var(--space-xl);
     }

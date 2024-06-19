@@ -8,9 +8,9 @@ class User < ApplicationRecord
 
   # Follow request made by the user
   has_many :active_follow_requests, class_name: 'FollowRequest', foreign_key: 'follower_id', dependent: :destroy
-  has_many :following, through: :active_follow_request, source: :followed
+  has_many :following, through: :active_follow_requests, source: :followed
 
   # Follow request to made by another user.
   has_many :passive_follow_requests, class_name: 'FollowRequest', foreign_key: 'followed_id', dependent: :destroy
-  has_many :followers, through: :passive_follow_requests, source: :follwers
+  has_many :followers, through: :passive_follow_requests, source: :follower
 end

@@ -20,4 +20,13 @@
         // border: var(--border-dark);
     }
 
+    &--icon-list {
+        float:left
+    }
+
+    &--icon-post {
+        float:left;
+        padding-right: var(--space-s);
+    }
+
 }

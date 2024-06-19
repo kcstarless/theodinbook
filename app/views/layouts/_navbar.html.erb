@@ -7,7 +7,7 @@
             <ul>
                 <% if user_signed_in? %>
                     <div class="navbar_menu">
-                        <li><a href="#">My Posts</a></li>
+                        <li><a href="<%= posts_path(user_posts: true) %>">My Posts</a></li>
                         <li><a href="#">Followers</a></li>
                     </div>   
                     <div class="navbar_profile">
