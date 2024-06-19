@@ -3,8 +3,11 @@
     flex-wrap: wrap;
     gap: var(--space-s);
     justify-content: space-between;
-    margin-top: var(--space-m);
+    margin-top: var(--space-l);
     margin-bottom: var(--space-l);
+
+    // border: var(--border-dark);
+    
   
     @include media(tabletAndUp) {
       margin-bottom: var(--space-xl);

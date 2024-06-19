@@ -1,6 +1,7 @@
 <main class="container">
     <div class="header">
-        <h1>Posts</h1>
+        <h1><%= image_tag("odin_posts2.png", class: "image image--icon-header") %>Posts</h1>
+        <p><%= image_tag("spear_up.png", class: "image image--icon-header") %>recent || oldest <%= image_tag("spear_down.png", class: "image image--icon-header") %></p>
         <%= link_to "New post", new_post_path, class: "btn btn--secondary" %>
     </div>
 

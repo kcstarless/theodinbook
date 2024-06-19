@@ -1,4 +1,5 @@
 .image {
+    
 
     &--brand {
         float: left;
@@ -8,6 +9,14 @@
 
     &--login {
 
+        // border: var(--border-dark);
+    }
+
+    &--icon-header {
+        vertical-align: middle;
+        display: inline-block;
+        padding-right: var(--space-s);
+        line-height: var(--line-height-navbar);
         // border: var(--border-dark);
     }
 

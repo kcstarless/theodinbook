@@ -1,0 +1,25 @@
+<section class="navbar">
+        <div class="brand">
+            <a href="#!"><%= image_tag("odin_brand2.png", class: "image image--brand") %>Odinbook</a>
+        </div>
+
+        <nav>
+            <ul>
+                <% if user_signed_in? %>
+                    <div class="navbar_menu">
+                        <li><a href="#">My Posts</a></li>
+                        <li><a href="#">Followers</a></li>
+                    </div>   
+                    <div class="navbar_profile">
+                        <li><a href="#">welcome@<%= current_user.username %></a></li>
+                        <li><a href="<%= destroy_user_session_path %>" data-turbo-method="delete">logout</a></li>
+                    </div>
+                <% else %>
+                    <div class="navbar_profile">
+                        <li><a href="<%= new_user_session_path %>">Sign-in</a></li>
+                        <li><a href="<%= new_user_registration_path %>">Register</a></li>
+                    </div>
+                <% end %>
+            </ul>
+        </nav>
+</section>

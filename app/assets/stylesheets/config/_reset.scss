@@ -81,3 +81,9 @@ a {
     color: var(--color-primary-rotate);
   }
 }
+
+p {
+  align-self:center;
+  // border: var(--border-dark);
+  font-size: var(--font-size-s);
+}

@@ -1,7 +1,9 @@
 .brand {
-    float: left;
+    // float: left;
     text-transform: uppercase;
     font-size: var(--font-size-xl);
+    // border: var(--border-dark);
+    align-self: end;
       
     a,
     a:visited {
