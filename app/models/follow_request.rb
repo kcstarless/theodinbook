@@ -5,4 +5,8 @@ class FollowRequest < ApplicationRecord
   validates :follower_id, presence: true
   validates :followed_id, presence: true
   validates :status, presence: true
+
+  scope :accepted, -> { where(status: 'accepted') }
+  scope :rejected, -> { where(status: 'rejected') }
+  scope :pending, -> { where(status: 'pending') }
 end

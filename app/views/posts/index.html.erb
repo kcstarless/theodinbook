@@ -1,4 +1,7 @@
 <main class="container">
+    <% if params[:user_posts] == 'true' %>
+        <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+    <% end %>
     <div class="header">
         <% if params[:user_posts] == 'true' %>
             <h1><%= image_tag("odin_posts3.png", class: "image image--icon-header") %>My Posts</h1>
