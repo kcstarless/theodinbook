@@ -17,4 +17,7 @@ class User < ApplicationRecord
   # Select only status accepted requests therefore followers
   has_many :accepted_passive_follow_requests, -> { accepted }, class_name: 'FollowRequest', foreign_key: 'followed_id'
   has_many :followers, through: :accepted_passive_follow_requests, source: :follower
+
+  # Post likes
+  has_many :liked_posts, through: :posts, source: :likes
 end
