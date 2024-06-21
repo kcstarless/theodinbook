@@ -2,6 +2,6 @@
 
 <div class="container">
     <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
+    <div class="error-message <%= key %>"><%= value %></div>
     <% end %>
 </div>

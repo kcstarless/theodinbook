@@ -3,7 +3,13 @@
 
   <div class="header header__show">
     <h1><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h1>
+
     <h4>by @<%= link_to @post.user.username, users_profile_path(user_id: @post.user_id, post_id: @post.id) %></h4>
+    <% if current_user.liked_post?(@post)%>
+      <h5><%= link_to image_tag("odin_liked.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
+    <% else %>
+      <h5><%= link_to image_tag("odin_likes3.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
+    <% end %>
     <h6>posted on: <%= @post.created_at.strftime("%d-%m-%Y") %></h6>
   </div>
 

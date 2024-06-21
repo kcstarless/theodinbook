@@ -2,7 +2,14 @@
     
     <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= link_to post.title, post_path(post) %></div>
     <div class="post__f1"><%= link_to post.user.username %></div>
-    <div class="post__f1"><%= image_tag("odin_likes3.png", class: "image image--icon-list") %>  50</div>
+    <div class="post__f1">
+        <% if current_user.liked_post?(post) %>
+            <%= image_tag("odin_liked.png", class: "image image--icon-list") %>
+        <% else %>
+            <%= image_tag("odin_likes3.png", class: "image image--icon-list") %>
+        <% end %>
+        <span class="post__liked_count"><%= post.likes_count %></span>
+    </div>
     <div class="post__actions">
 
         <% if false %>

@@ -4,5 +4,9 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   belongs_to :user
-  has_many :likes
+  has_many :likes, foreign_key: 'posted', dependent: :destroy
+
+  def likes_count
+    likes.count
+  end
 end

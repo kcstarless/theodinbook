@@ -17,6 +17,11 @@
     @include media(tabletAndUp) {
       padding: var(--space-xs) var(--space-m);
     }
+
+    &__liked_count {
+      font-size: var(--font-size-xl);
+      padding-left: var(--space-xs);
+    }
   
     &__actions {
       display: flex;

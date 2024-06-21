@@ -19,5 +19,16 @@ class User < ApplicationRecord
   has_many :followers, through: :accepted_passive_follow_requests, source: :follower
 
   # Post likes
+  has_many :likes, foreign_key: 'liked'
   has_many :liked_posts, through: :posts, source: :likes
+
+  # Check if post was liked
+  def liked_post?(post)
+    likes.exists?(posted: post.id)
+  end
+
+  # Returns total likes on users post
+  def total_likes(user)
+    posts.joins(:likes).count
+  end
 end

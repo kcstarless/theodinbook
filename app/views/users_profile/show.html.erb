@@ -10,7 +10,7 @@
     <div class='f1'>No. of posts: <%= @user.posts.count %></div>
     <div class='f1'>Followers: <%= @user.followers.count %></div>
     <div class='f1'>Following: <%= @user.following.count %></div>
-    <div class='f1'>Total likes: </div>
+    <div class='f1'>Total likes: <%= @user.liked_posts.count %></div>
     <div class='f1'>
     <% if @follow_request_status == 'self' %>
       Pending requests:<br>

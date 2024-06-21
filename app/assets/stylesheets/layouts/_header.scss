@@ -7,7 +7,22 @@
     margin-bottom: var(--space-l);
 
     // border: var(--border-dark);
-    
+    ul {
+      font-size: var(--font-size-xs);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      // border: var(--border-dark);
+      align-items:center;
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-l);
+      // align-items:center;
+      li {
+        float: left;
+        position: relative;
+      }
+    }
   
     &__show {
       // display: flex;
@@ -22,4 +37,5 @@
     @include media(tabletAndUp) {
       margin-bottom: var(--space-xl);
     }
+
   }

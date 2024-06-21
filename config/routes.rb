@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  root to: "posts#index"
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
 
-  # resources :users
-
-  resources :posts
+  resources :posts do
+    member do
+      post 'liked', to: 'likes#liked'
+    end
+  end
 
   resources :users_profile, only: [:show], param: :user_id
 
@@ -22,8 +26,4 @@ Rails.application.routes.draw do
       delete 'unfollow', to: 'follow_requests#destroy'
     end
   end
-
-  # get 'my_posts', to: 'posts#my_posts', as: 'my_posts'
-  root to: "posts#index"
-
 end
