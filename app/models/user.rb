@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :likes, foreign_key: 'liked'
   has_many :liked_posts, through: :posts, source: :likes
 
+  # User comments
+  has_many :comments, foreign_key: 'user_id'
+
   # Check if post was liked
   def liked_post?(post)
     likes.exists?(posted: post.id)

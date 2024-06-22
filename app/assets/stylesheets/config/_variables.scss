@@ -52,9 +52,11 @@
     // Border
     --border: solid 2px var(--color-light);
     --border-dark: solid 2px var(--color-dark);
+    --border-light: solid 1px var(--color-dark);
     --border-radius: 0.375rem;
 
     // Shadows
     --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
     --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
+    --shadow-small-comments:  0px 2px 0px hsl(0 0% 0% / 0.1);
 }

@@ -1,7 +1,7 @@
 # app/controllers/users_controller.rb
 class UsersProfileController < ApplicationController
   before_action :set_user, only: [:show]
-  before_action :set_pending_reqeust, only: [:show]
+  # before_action :set_pending_reqeust, only: [:show]
 
   def show
     @posts = @user.posts  # all users post
@@ -20,9 +20,9 @@ class UsersProfileController < ApplicationController
 
   private
 
-  def set_pending_reqeust
+  # def set_pending_reqeust
 
-  end
+  # end
 
   def set_user
     # Rails.logger.info("Params: #{params.inspect}")

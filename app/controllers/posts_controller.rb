@@ -8,10 +8,14 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+
+    @followed_posts = Post.where(user: current_user.following).order(created_at: :desc)
   end
 
   def show
-
+    @comments = @post.comments
+    @make_comment = Comment.new
+    # Rails.logger.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXX: #{@comments.inspect}")
   end
 
   def new
@@ -61,4 +65,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body, :user_id, :title)
   end
 
+  # def comment_params
+  #   params.require(:comment).permit(:user_id, :post_id, :body)
+  # end
 end

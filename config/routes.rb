@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   }
 
   resources :posts do
+    resources :comments
+
     member do
       post 'liked', to: 'likes#liked'
     end

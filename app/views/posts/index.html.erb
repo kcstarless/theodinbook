@@ -17,4 +17,11 @@
     </div>
 
     <%= render @posts %>
+
+    <div class="header">    
+        <h2>Followers posts</h2>
+    </div>
+    <% if params[:user_posts] == 'true' %>
+            <%= render @followed_posts %>
+    <% end %>
 </main>

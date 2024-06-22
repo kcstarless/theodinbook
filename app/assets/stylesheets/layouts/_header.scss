@@ -34,8 +34,18 @@
 
       border-bottom: var(--border-dark);
     }
+
+    &--comments{
+      // border: var(--border-dark);
+      margin-bottom: var(--space-xs);
+    }
     @include media(tabletAndUp) {
       margin-bottom: var(--space-xl);
+      
+      &--comments{
+        // border: var(--border-dark);
+        margin-bottom: var(--space-xs);
+      }
     }
 
   }

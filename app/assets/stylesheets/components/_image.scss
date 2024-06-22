@@ -29,4 +29,12 @@
         padding-right: var(--space-s);
     }
 
+    &--icon-comment-list {
+        display: flex;
+        align-items: center;
+        padding-right: var(--space-xs);
+        // padding-top: var(--space-xs);
+        float:left;     
+    }
+
 }
