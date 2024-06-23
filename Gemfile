@@ -80,3 +80,8 @@ end
 
 gem "devise", "~> 4.9"
 gem "simple_form", "~> 5.1.0"
+
+gem "omniauth"
+gem 'omniauth-github'
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"

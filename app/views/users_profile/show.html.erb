@@ -5,6 +5,7 @@
   </div>
 
   <div class="profile">
+    <div class="f1"><%= image_tag("#{@user.avatar_url}") %></div>
     <div class="f1"><%= @user.email %></div>
     <div class='f1'>Member since: <%= @user.created_at.strftime("%d-%m-%Y") %></div>
     <div class='f1'>No. of posts: <%= @user.posts.count %></div>
