@@ -3,10 +3,50 @@
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-small);
     margin-bottom: var(--space-m);
+    // background-image: url('/assets/odin_home4.png');
+    // background-position: right;
+    // background-size: auto;
+    // background-repeat: no-repeat; 
     // padding: var(--space-xs);
+    display:flex;
+    flex-direction: row; 
+    justify-content: space-between;
 
+    h5 {
+        padding-top: var(--space-xs);
+        padding-bottom: var(--space-xs);
+        font-size: var(--font-size-xs);
+        // color: var(--text-color-muted);
+    }
+
+   a {
+        font-weight: bold !important;
+    }
+    
+    .follow_requests {
+        display: flex;
+        align-items: center;
+    }
+
+    .pending_list {
+        // border: var(--border-dark);
+        display: flex;
+        // justify-content: center;
+        // align-items: center;
+        gap: var(--space-s);
+        padding-top: 0px;
+        padding-right: 15px;
+        // font-weight: bold;
+        // font-size: var(--font-size-s);
+    }
 
     @include media(tabletAndUp) {
     padding: var(--space-xs) var(--space-m);
+    }
+
+    .profile_image {
+        align-self: center;
+        // padding-left: var(--space-xxxl);
+        // float:right;
     }
 }

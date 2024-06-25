@@ -1,16 +1,25 @@
 class FollowRequestsController < ApplicationController
   before_action :set_follow_request, only: [:accept, :reject]
+  before_action :request_exists?, only: [:create]
   before_action :authenticate_user!
 
   def create
-    @user = User.find(params[:id])
-    @follow_request = current_user.active_follow_requests.new(followed_id: @user.id)
-    @follow_request.status = 'pending'
-
-    if @follow_request.save
-      redirect_to user_path, notice: 'Follow request sent.'
+    p "RRRRRRRRRRRRRRRRRR #{@existing_request}.id"
+    if @existing_request
+      if @existing_request.status == 'rejected'
+        @existing_request.update(status: 'pending')
+        redirect_to user_path, notice: 'you sent request again.'
+      end
     else
-      redirect_to users_path, alert: 'Unable to send follow request.'
+      @user = User.find(params[:id])
+      @follow_request = current_user.active_follow_requests.new(followed_id: @user.id)
+      @follow_request.status = 'pending'
+
+      if @follow_request.save
+        redirect_to user_path, notice: 'Follow request sent.'
+      else
+        redirect_to users_path, alert: 'Unable to send follow request.'
+      end
     end
   end
 
@@ -43,12 +52,17 @@ class FollowRequestsController < ApplicationController
 
   private
 
+  def request_exists?
+    @existing_request = FollowRequest.find_by(follower_id: current_user.id, followed_id: params[:id])
+    p "RRRRRRRRRRRRRRRRRR #{@existing_request}"
+  end
+
   def set_follow_request
     Rails.logger.info("XXXXXXXX: #{params.inspect}")
     @follow_request = FollowRequest.find(params[:id])
   end
 
-  def follow_request_params
-    params.require(:follow_request).permit(:followed_id)
-  end
+  # def follow_request_params
+  #   params.require(:follow_request).permit(:followed_id)
+  # end
 end

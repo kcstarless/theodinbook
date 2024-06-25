@@ -37,6 +37,51 @@
           filter: saturate(1.2) brightness(110%);
         }
       }
+
+      &--accept_reject {
+        color: var(--color-white);
+        background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));
+        font-size: var(--font-size-xs);
+        border-radius: var(--border-radius-round);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;  /* Set to desired width */
+        height: 22px; /* Set to desired height */
+        padding: 0;
+        // margin-right: var(--space-xs);
+        // margin-left: var(--space-xs);
+        // float: right;
+        // padding: var(--space-m);
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+          color: var(--color-dark);
+          filter: saturate(1.2) brightness(110%);
+        }
+      }
+
+      &--follow_unfollow {
+        color: var(--color-white);
+        background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));
+        font-size: var(--font-size-l);
+        border-radius: var(--border-radius-round);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;  /* Set to desired width */
+        height: 20px; /* Set to desired height */
+        padding: 0;
+
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+          color: var(--color-dark);
+          filter: saturate(1.2) brightness(110%);
+        }
+      }
     
       &--light {
         color: var(--color-dark);

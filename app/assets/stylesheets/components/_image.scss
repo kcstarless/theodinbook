@@ -24,9 +24,10 @@
         float:left
     }
 
-    &--icon-post {
+    &--postshow {
         float:left;
         padding-right: var(--space-s);
+        // border: var(--border-dark);
     }
 
     &--icon-comment-list {
@@ -35,6 +36,26 @@
         padding-right: var(--space-xs);
         // padding-top: var(--space-xs);
         float:left;     
+    }
+
+    &--profile-icon {
+        // float:left;
+        width: 65px;
+        height: 65px;
+        // border-radius: 50%;
+        object-fit: cover;
+        border: var(--border);
+        background-color: var(--color-white);
+        border-radius: var(--border-radius-round);
+        box-shadow: var(--shadow-small-profile); /* Add shadow */
+        
+    }
+    &--icon-profile {
+        float:left;
+        padding-right: var(--space-s);
+    }
+    &--profile-details {
+        padding-right: var(--space-xxxxl);
     }
 
 }

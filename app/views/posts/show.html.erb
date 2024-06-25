@@ -1,4 +1,4 @@
-<main class="container">
+<div class="container">
   <%= link_to sanitize("&larr; Back to posts"), posts_path %>
 
   <div class="header header__show">
@@ -13,9 +13,10 @@
     <h6>posted on: <%= @post.created_at.strftime("%d-%m-%Y") %></h6>
   </div>
 
-  <div class="post_body">
-    <%= image_tag("odin_post_body.png", class: "image image--icon-post") %>
+  <div class="post__post_show">
+    <%= image_tag("odin_post_body.png", class: "image image--postshow") %>
     <%= @post.body %>
+    <div style="clear: both;"></div> 
   </div>
 
   <div class="header header--comments">
@@ -29,4 +30,4 @@
       </ul><br>
     <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>
   </div>
-</main>
+</div>

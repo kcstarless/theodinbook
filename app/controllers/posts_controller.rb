@@ -5,11 +5,12 @@ class PostsController < ApplicationController
   def index
     if params[:user_posts] == 'true'
       @posts = current_user.posts
+      @followed_posts = Post.where(user: current_user.following).order(created_at: :desc)
     else
       @posts = Post.all
     end
 
-    @followed_posts = Post.where(user: current_user.following).order(created_at: :desc)
+    @posts = sort_posts
   end
 
   def show
@@ -37,11 +38,11 @@ class PostsController < ApplicationController
   end
 
   def update
-      if @post.update(post_params)
-        redirect_to posts_path, notice: "Post updated successfully."
-      else
-        render :edit
-      end
+    if @post.update(post_params)
+      redirect_to posts_path, notice: "Post updated successfully."
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -50,6 +51,19 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def sort_posts()
+    @post = case params[:sort]
+                  when 'recent'
+                    @posts.order(created_at: :desc)
+                  when 'oldest'
+                    @posts.order(created_at: :asc)
+                  when 'likes'
+                    @posts.left_joins(:likes).group(:id).order('COUNT(likes.id) DESC')
+                  else
+                    @posts
+                  end
+  end
 
   def authenticate_user!
     unless current_user
@@ -64,8 +78,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:body, :user_id, :title)
   end
-
-  # def comment_params
-  #   params.require(:comment).permit(:user_id, :post_id, :body)
-  # end
 end

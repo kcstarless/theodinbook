@@ -19,7 +19,7 @@
 
     // Three different text colors
     --color-text-header: hsl(0, 1%, 16%);
-    --color-text-body:   hsl(0, 5%, 25%);
+    --color-text-body:   #433d3d;
     --color-text-muted:  hsl(0, 1%, 44%);
 
     // Classical and robust spacing system
@@ -54,9 +54,11 @@
     --border-dark: solid 2px var(--color-dark);
     --border-light: solid 1px var(--color-dark);
     --border-radius: 0.375rem;
+    --border-radius-round: 3rem;
 
     // Shadows
     --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
     --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
     --shadow-small-comments:  0px 2px 0px hsl(0 0% 0% / 0.1);
+    --shadow-small-profile: 0 4px 8px hsla(0, 100%, 0%, 0.3); 
 }

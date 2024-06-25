@@ -1,6 +1,7 @@
 # app/controllers/users_controller.rb
 class UsersProfileController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :authenticate_user!
   # before_action :set_pending_reqeust, only: [:show]
 
   def show
@@ -11,11 +12,9 @@ class UsersProfileController < ApplicationController
       @follow_request_status = follow_request ? follow_request.status : 'none'
     else
       @pending_request = FollowRequest.where(followed: current_user, status: 'pending')
-      Rails.logger.info("PARAMS: #{@pending_request.inspect}")
+      Rails.logger.info("PARAMSSSSSSSSS: #{@pending_request.inspect}")
       @follow_request_status = 'self'
     end
-
-
   end
 
   private

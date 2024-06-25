@@ -13,7 +13,16 @@
     margin-bottom: var(--space-m);
     // padding: var(--space-xs);
 
-  
+    &__post_show {
+      // border: var(--border-dark);
+
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    }
+
     @include media(tabletAndUp) {
       padding: var(--space-xs) var(--space-m);
     }

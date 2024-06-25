@@ -11,9 +11,11 @@
 require 'faker'
 
 # Destroy all data
+Comment.destroy_all
+Like.destroy_all
+FollowRequest.destroy_all
 Post.destroy_all
 User.destroy_all
-
 
 # Create User data
 User.create(username: 'tom', email: 'tom@example.com', password: '121212')

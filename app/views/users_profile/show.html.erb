@@ -1,42 +1,64 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to post"), posts_path %>
   <div class="header">
-    <h1><%= @user.username %>'s profile</h1>
+    <div class="header--profile">
+
+      <% if !@user.avatar_url %>
+        <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
+      <% else %>
+        <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
+      <% end %>
+
+      <h2><%= @user.username %>'s profile</h2>
+      
+      <% if @follow_request_status != 'self' %>
+          <% if @follow_request_status == 'pending' %>
+            <%= image_tag('icon_pending_requests.svg', title: 'Follow request pending') %>
+          <% elsif @follow_request_status == 'rejected' %>
+            <%= link_to '+', follow_user_path(@user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
+          <% elsif @follow_request_status == 'accepted' %>
+            <%= link_to '-', unfollow_user_path(@user), method: :delete, data: {turbo_method: :delete}, class: 'btn btn--follow_unfollow', title: 'Unfollow this user' %>
+          <% else %>
+            <%= link_to "+", follow_user_path(@user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
+          <% end %>
+        <% end %>
+    </div>
   </div>
 
   <div class="profile">
-    <div class="f1"><%= image_tag("#{@user.avatar_url}") %></div>
-    <div class="f1"><%= @user.email %></div>
-    <div class='f1'>Member since: <%= @user.created_at.strftime("%d-%m-%Y") %></div>
-    <div class='f1'>No. of posts: <%= @user.posts.count %></div>
-    <div class='f1'>Followers: <%= @user.followers.count %></div>
-    <div class='f1'>Following: <%= @user.following.count %></div>
-    <div class='f1'>Total likes: <%= @user.liked_posts.count %></div>
-    <div class='f1'>
-    <% if @follow_request_status == 'self' %>
-      Pending requests:<br>
-      <% @pending_request.each do |request| %>
-        <%= request.follower.username %>
-        <%= button_to "Accept", accept_follow_request_path(id: request.id), method: :patch, class: "btn btn--secondary" %>
-        <%= link_to "Reject", reject_follow_request_path, method: :patch,  data: {turbo_method: :patch}, class: "btn btn--secondary" %>
-      <% end %>
-    <% else %>
-      <% if @follow_request_status == 'pending' %>
-        Request pending
-      <% elsif @follow_request_status == 'rejected' %>
-        Request rejected
-        <%= link_to 'Unfollow', unfollow_user_path(@user), method: :delete, data: {turbo_method: :delete} %>
-      <% elsif @follow_request_status == 'accepted' %>
-        <%= link_to 'Unfollow', unfollow_user_path(@user), method: :delete, data: {turbo_method: :delete} %>
-      <% else %>
-        <%= link_to 'Send follow request', follow_user_path(@user), method: :post, data: {turbo_method: :post} %>
-      <% end %>
-    <% end %>
+    <div class="profile_detail">
+      <div class="detail_field"><%= image_tag('icon_email.svg', class: 'image--icon-profile')%><%= @user.email %></div>
+      <div class="detail_field"><%= image_tag('icon_member.svg', class: 'image--icon-profile')%>since <%= @user.created_at.strftime("%d-%m-%Y") %></div>
+      <div class="detail_field"><%= image_tag('icon_posts.svg', class: 'image--icon-profile')%>No. of posts: <%= @user.posts.count %></div>
+      <div class="detail_field"><%= image_tag('icon_followers.svg', class: 'image--icon-profile')%>Followers: <%= @user.followers.count %></div>
+      <div class="detail_field"><%= image_tag('icon_following.svg', class: 'image--icon-profile')%>Following: <%= @user.following.count %></div>
+      <div class="detail_field"><%= image_tag('icon_likes.svg', class: 'image--icon-profile')%>Total likes: <%= @user.liked_posts.count %></div>
+
+      <div class='follow_requests'>
+        <% if @follow_request_status == 'self' %>
+          <% if @pending_request.count != 0 %>
+            <%= image_tag('icon_request.svg', class: 'image--icon-profile', title: 'Follow requests.')%>
+            <% @pending_request.each do |request| %>
+            <div class="pending_list">  
+              <%= link_to "@#{request.follower.username}", users_profile_path(request.follower.id) %>
+              <%= button_to "\u2714", accept_follow_request_path(id: request.id), method: :patch, class: "btn btn--accept_reject", title: 'Accept request.' %>
+              <%= button_to "\u2716", reject_follow_request_path(id: request.id), method: :patch,  data: {turbo_method: :patch}, class: "btn btn--accept_reject", title: 'Reject request.' %>
+            </div>         
+            <% end %>
+          <% end %>
+        <% else %>
+
+        <% end %>
+      </div>
+    </div>
+
+    <div class="profile_image">
+      <%= image_tag("odin_home4.png", class: "image image--profile-details")%>
     </div>
   </div>
 
   <div class="header">
-    <h1>posts</h1>
+    <h3><%= image_tag("header_posts2.png", class: "image image--icon-header") %><%= @user.username %>'s posts</h3>
   </div>
   <%= render @posts %>
 </main>

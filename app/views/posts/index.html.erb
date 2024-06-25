@@ -4,24 +4,25 @@
     <% end %>
     <div class="header">
         <% if params[:user_posts] == 'true' %>
-            <h2><%= image_tag("odin_posts3.png", class: "image image--icon-header") %>My Posts</h2>
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>My Posts</h2>
         <% else %>
-            <h2><%= image_tag("odin_posts3.png", class: "image image--icon-header") %>Posts</h2>
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>Posts</h2>
         <% end %>
         <ul>
-            <li><%= image_tag("spear_up.png", class: "image image--icon-header") %>recent</li> 
-            <li><%= image_tag("spear_down.png", class: "image image--icon-header") %>oldest</li> 
-            <li><%= image_tag("odin_likes3.png", class: "image image--icon-header") %>likes</li>   
+            <% user_posts_param = params[:user_posts] == 'true' ? { user_posts: 'true' } : {} %>
+            <li><%= link_to (image_tag("spear_up.png", class: "image image--icon-header") + "recent"), posts_path({ sort: 'recent' }.merge(user_posts_param)) %></li> 
+            <li><%= link_to (image_tag("spear_down.png", class: "image image--icon-header") + "oldest"), posts_path({ sort: 'oldest' }.merge(user_posts_param)) %></li> 
+            <li><%= link_to (image_tag("odin_likes3.png", class: "image image--icon-header") + "likes"), posts_path({ sort: 'likes' }.merge(user_posts_param)) %></li>   
             <li><%= link_to "New post", new_post_path, class: "btn btn--secondary" %></li>
         </ul>
     </div>
 
     <%= render @posts %>
 
-    <div class="header">    
-        <h2>Followers posts</h2>
-    </div>
     <% if params[:user_posts] == 'true' %>
-            <%= render @followed_posts %>
+        <div class="header">    
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>Followers posts</h2>
+        </div>
+        <%= render @followed_posts %>
     <% end %>
 </main>
