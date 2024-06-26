@@ -57,6 +57,7 @@ group :development do
   gem "web-console"
   gem "pry-byebug"
 
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -85,3 +86,6 @@ gem "omniauth"
 gem 'omniauth-github'
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+
+gem "letter_opener", group: :development
+gem 'launchy'

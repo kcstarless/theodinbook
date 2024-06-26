@@ -27,4 +27,10 @@
         // justify-content:space-around;
         // border: var(--border-dark);
     }
+
+    &--omni {
+        margin-top: var(--space-s);
+        padding-top: var(--space-s);
+        border-top: var(--border-dark);
+    }
 }

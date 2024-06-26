@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users, only: [:index]
+
   root to: "posts#index"
 
   devise_for :users, controllers: {

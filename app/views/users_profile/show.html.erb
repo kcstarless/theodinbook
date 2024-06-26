@@ -1,27 +1,43 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to post"), posts_path %>
   <div class="header">
-    <div class="header--profile">
-
-      <% if !@user.avatar_url %>
-        <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
-      <% else %>
-        <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
-      <% end %>
-
-      <h2><%= @user.username %>'s profile</h2>
-      
-      <% if @follow_request_status != 'self' %>
-          <% if @follow_request_status == 'pending' %>
-            <%= image_tag('icon_pending_requests.svg', title: 'Follow request pending') %>
-          <% elsif @follow_request_status == 'rejected' %>
-            <%= link_to '+', follow_user_path(@user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
-          <% elsif @follow_request_status == 'accepted' %>
-            <%= link_to '-', unfollow_user_path(@user), method: :delete, data: {turbo_method: :delete}, class: 'btn btn--follow_unfollow', title: 'Unfollow this user' %>
-          <% else %>
-            <%= link_to "+", follow_user_path(@user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
+    <div class="user users">
+      <div class="user_container_profile">
+        
+        <div class="user_image">
+                <% if !@user.avatar_url %>
+                  <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
+                <% else %>
+                  <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
+                <% end %>
+        </div>
+        
+        <div class="user_button">
+          <% if @follow_request_status != 'self' %>
+            <% if @follow_request_status == 'pending' %>
+              <%= image_tag('icon_pending_requests.svg', title: 'Follow request pending') %>
+            <% elsif @follow_request_status == 'accepted' %>
+              <%= link_to '-', unfollow_user_path(@user), method: :delete, data: {turbo_method: :delete}, class: 'btn btn--follow_unfollow', title: 'Unfollow this user' %>
+            <% else %>
+              <%= link_to "+", follow_user_path(@user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      
+        <div class="user_info">
+          <h2><%= @user.username %>'s profile</h2>
+                    <% if @follow_request_status != 'self' %>
+            <% if @follow_request_status == 'pending' %>
+              pending request
+            <% elsif @follow_request_status == 'accepted' %>
+              following user
+            <% else %>
+              not following
+            <% end %>
+          <% end %>
+        </div>
+      
+      </div>
     </div>
   </div>
 

@@ -3,6 +3,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  def create
+    super do |resource|
+      Rails.logger.debug "Sending welcome email to #{resource.email}"
+      UserMailer.welcome_email(resource).deliver_later if resource.persisted?
+    end
+  end
+
   protected
 
   # Permit the username parameter along with the default Devise parameters

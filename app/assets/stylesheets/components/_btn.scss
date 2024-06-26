@@ -26,6 +26,7 @@
       }
     
       &--secondary {
+        font-size: var(--space-s);
         color: var(--color-white);
         background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));
     

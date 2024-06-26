@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   belongs_to :user
+
   has_many :likes, foreign_key: 'posted', dependent: :destroy
 
   has_many :comments, foreign_key: 'post_id', dependent: :destroy

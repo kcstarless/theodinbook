@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="header">
+        <h2><%= image_tag("header_allusers_m.png", class: "image image--icon-header") %>all users</h2>
+    </div>
+
+    <div class="users">
+        <% @users.each do |user| %>
+
+            <div class="user_container">
+                <div class="user_image">
+                    <% if !user.avatar_url %>
+                        <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
+                    <% else %>
+                        <%= image_tag("#{user.avatar_url}", class: "image image--profile-icon") %>
+                    <% end %>
+                </div>
+                <div class="user_button">
+                    <% if @follow_requests[user.id] == 'pending' %>
+                        <%= image_tag('icon_pending_requests.svg', title: 'Follow request pending') %>
+                    <% elsif @follow_requests[user.id]  == 'accepted' %>
+                        <%= link_to '-', unfollow_user_path(user), method: :delete, data: {turbo_method: :delete}, class: 'btn btn--follow_unfollow', title: 'Unfollow this user' %>
+                    <% else %>
+                        <%= link_to "+", follow_user_path(user), method: :post, data: {turbo_method: :post}, class: 'btn btn--follow_unfollow', title: 'Follow this user' %>
+                    <% end %>
+                </div>
+                <div class="user_info">
+                    <%= link_to "@#{user.username}", users_profile_path(user) %>
+                    <br>
+                    <% if @follow_requests[user.id] == 'pending' %>
+                        <h5>request pending</h5>
+                    <% elsif @follow_requests[user.id]  == 'accepted' %>
+                        <h5>following user</h5>
+                    <% else %>
+                        <h5>not following</h5>
+                    <% end %>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>
