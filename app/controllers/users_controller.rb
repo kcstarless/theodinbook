@@ -9,4 +9,5 @@ class UsersController < ApplicationController
       @follow_requests[user.id] = follow_request.status if follow_request
     end
   end
+
 end

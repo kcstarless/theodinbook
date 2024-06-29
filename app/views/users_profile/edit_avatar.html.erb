@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="header">
+        <h2><%= image_tag "icon_avatar_edit.png", class: "image image--icon-header" %>avatars</h2>
+    </div>
+    
+    <div class="avatar"> 
+        <%= form_with model: @user, url: update_avatar_users_profile_path(current_user), html: { multipart: true, data: { turbo_stream: true } }, method: :patch do |f| %>
+        
+        <div class="avatar_select">
+            <% Dir.glob(Rails.root.join('app/assets/images/avatars/*')).each do |avatar| %>
+                <%= image_tag "avatars/#{File.basename(avatar)}", class: 'image image--profile-icon', data: { avatar_url: "avatars/#{File.basename(avatar)}" } %>
+           <% end %>
+        </div>
+
+        <div class="field">
+            <h3><%= image_tag "icon_upload.png", class: "image image--icon-header" %>upload your own</h3>
+            <%= f.file_field :avatar %>
+        </div>
+
+        <br>
+
+        <%= f.hidden_field :avatar_url, id: 'avatar_url' %>
+
+        <div class="actions">
+            <%= f.submit "Update Avatar", class: 'btn btn--secondary' %>
+        </div>
+        <% end %>
+    </div>
+</div>

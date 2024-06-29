@@ -8,8 +8,8 @@
 
             <div class="user_container">
                 <div class="user_image">
-                    <% if !user.avatar_url %>
-                        <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
+                    <% if !user.avatar_url || user.avatar_url == 'undefined' %>
+                        <%= image_tag("avatars/avatar_01.png", class: "image image--profile-icon") %>
                     <% else %>
                         <%= image_tag("#{user.avatar_url}", class: "image image--profile-icon") %>
                     <% end %>

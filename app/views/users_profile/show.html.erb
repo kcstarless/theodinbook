@@ -5,11 +5,21 @@
       <div class="user_container_profile">
         
         <div class="user_image">
-                <% if !@user.avatar_url %>
-                  <%= image_tag("default_profile2.png", class: "image image--profile-icon") %>
+            <% if current_user == @user %>
+              <%= link_to edit_avatar_users_profile_path do %>
+                <% if !@user.avatar_url || @user.avatar_url == 'undefined' %>
+                  <%= image_tag("avatars/avatar_01.png", class: "image image--profile-icon") %>
                 <% else %>
                   <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
                 <% end %>
+              <% end %>
+            <% else %>
+              <% if !@user.avatar_url || @user.avatar_url == 'undefined' %>
+                <%= image_tag("avatar/avatar_01.png", class: "image image--profile-icon") %>
+              <% else %>
+                <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
+              <% end %>
+            <% end %>
         </div>
         
         <div class="user_button">
@@ -44,11 +54,11 @@
   <div class="profile">
     <div class="profile_detail">
       <div class="detail_field"><%= image_tag('icon_email.svg', class: 'image--icon-profile')%><%= @user.email %></div>
-      <div class="detail_field"><%= image_tag('icon_member.svg', class: 'image--icon-profile')%>since <%= @user.created_at.strftime("%d-%m-%Y") %></div>
-      <div class="detail_field"><%= image_tag('icon_posts.svg', class: 'image--icon-profile')%>No. of posts: <%= @user.posts.count %></div>
-      <div class="detail_field"><%= image_tag('icon_followers.svg', class: 'image--icon-profile')%>Followers: <%= @user.followers.count %></div>
-      <div class="detail_field"><%= image_tag('icon_following.svg', class: 'image--icon-profile')%>Following: <%= @user.following.count %></div>
-      <div class="detail_field"><%= image_tag('icon_likes.svg', class: 'image--icon-profile')%>Total likes: <%= @user.liked_posts.count %></div>
+      <div class="detail_field"><%= image_tag('icon_member.svg', class: 'image--icon-profile')%>Member since <%= @user.created_at.strftime("%d-%m-%Y") %></div>
+      <div class="detail_field"><%= image_tag('icon_posts.svg', class: 'image--icon-profile')%>No. of posts: <b><%= @user.posts.count %></b></div>
+      <div class="detail_field"><%= image_tag('icon_followers.svg', class: 'image--icon-profile')%>Followers: <b><%= @user.followers.count %></b></div>
+      <div class="detail_field"><%= image_tag('icon_following.svg', class: 'image--icon-profile')%>Following: <b><%= @user.following.count %></b></div>
+      <div class="detail_field"><%= image_tag('icon_likes.svg', class: 'image--icon-profile')%>Total likes: <b><%= @user.liked_posts.count %></b></div>
 
       <div class='follow_requests'>
         <% if @follow_request_status == 'self' %>

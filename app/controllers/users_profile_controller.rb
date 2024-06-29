@@ -12,8 +12,30 @@ class UsersProfileController < ApplicationController
       @follow_request_status = follow_request ? follow_request.status : 'none'
     else
       @pending_request = FollowRequest.where(followed: current_user, status: 'pending')
-      Rails.logger.info("PARAMSSSSSSSSS: #{@pending_request.inspect}")
+      # Rails.logger.info("PARAMSSSSSSSSS: #{@pending_request.inspect}")
       @follow_request_status = 'self'
+    end
+  end
+
+  def edit_avatar
+    @user = current_user
+  end
+
+  def update_avatar
+    @user = current_user
+    # Rails.logger.info("Avatar URL received (before check): #{params[:user][:avatar_url]}")
+    if params[:user][:avatar].present?
+      @user.avatar.purge if @user.avatar.attached?
+      @user.avatar.attach(params[:user][:avatar])
+      @user.avatar_url = url_for(@user.avatar)
+    else
+      @user.avatar_url = params[:user][:avatar_url]
+    end
+
+    if @user.save
+      redirect_to users_profile_path(@user), notice: 'Avatar was successfully updated.'
+    else
+      redirect_to edit_avatar_users_profile_path(@user), alert: 'Avatar could not be saved.'
     end
   end
 

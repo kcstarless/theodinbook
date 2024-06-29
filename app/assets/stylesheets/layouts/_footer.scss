@@ -5,11 +5,42 @@
     margin-top: var(--space-xl);
     margin-left: auto;
     margin-right: auto;
-       border: var(--border-dark);
+    border-top: var(--border-light);
 
     @include media(tabletAndUp) {
         padding-right: var(--space-m);
         padding-left: var(--space-m);
         max-width: 50rem;
       }
+
+  .footer_author {
+    float: right;
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-l);
+    position: relative; /* Ensure the container is positioned */
+  }
+
+  .footer_author h5 a {
+    position: relative; /* Ensure the link is positioned */
+    display: inline-block; /* Ensure the link behaves as a block element */
+    color: inherit; /* Inherit text color from parent */
+  }
+
+  .footer_author h5 a::before {
+    content: url("icon_author_rotate.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transform: rotateZ(180deg); /* Initial rotation state */
+    transition: opacity 0.3s ease, transform 2s ease; /* Smooth transition */
+  }
+
+  .footer_author h5 a:hover::before {
+    opacity: 1;
+    transform: rotateY(0deg); /* Rotate back to original state on hover */
+  }
 }

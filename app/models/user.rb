@@ -17,6 +17,7 @@ class User < ApplicationRecord
     end
   end
 
+
   has_many :posts, dependent: :destroy
 
   # Follow request made by the user
@@ -37,6 +38,9 @@ class User < ApplicationRecord
 
   # User comments
   has_many :comments, foreign_key: 'user_id'
+
+  # Active storage for avatar
+  has_one_attached :avatar
 
   # Check if post was liked
   def liked_post?(post)

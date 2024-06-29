@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users_profile, only: [:show], param: :user_id
+  resources :users_profile, only: [:show], param: :user_id do
+    member do
+      get 'edit_avatar', to: 'users_profile#edit_avatar', as: :edit_avatar
+      patch 'update_avatar', to: 'users_profile#update_avatar', as: :update_avatar
+    end
+  end
 
   resources :follow_requests, only: [:create, :destroy], param: :user_id do
     member do
@@ -25,10 +30,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show], controller: 'users_profile' do
+  resources :users, only: [:index, :show, :edit, :update], controller: 'users_profile' do
     member do
       post 'follow', to: 'follow_requests#create'
       delete 'unfollow', to: 'follow_requests#destroy'
+
     end
   end
 end

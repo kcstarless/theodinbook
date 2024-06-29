@@ -46,3 +46,27 @@
     }
   }
 
+.avatar {
+
+  .avatar_select {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: var(--space-m);
+
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-small);
+    margin-bottom: var(--space-m);
+
+    cursor: pointer;
+  }
+
+  .image--profile-icon.selected{
+    border: var(--border-dark);
+  }
+
+  h3 {
+    padding-bottom: var(--space-m);
+  }
+}

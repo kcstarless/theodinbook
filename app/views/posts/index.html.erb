@@ -4,9 +4,9 @@
     <% end %>
     <div class="header">
         <% if params[:user_posts] == 'true' %>
-            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>My Posts</h2>
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>my posts</h2>
         <% else %>
-            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>Posts</h2>
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>posts</h2>
         <% end %>
         <ul>
             <% user_posts_param = params[:user_posts] == 'true' ? { user_posts: 'true' } : {} %>
@@ -21,7 +21,7 @@
 
     <% if params[:user_posts] == 'true' %>
         <div class="header">    
-            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>Followers posts</h2>
+            <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>following user's post</h2>
         </div>
         <%= render @followed_posts %>
     <% end %>
