@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files in Tigris Global Object Storage (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :tigris
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -50,7 +50,6 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
@@ -95,20 +94,26 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
   config.action_mailer.default_url_options = { host: 'theodinbook.fly.dev' }
-
   config.action_mailer.delivery_method = :smtp
+  config.logger = Logger.new(STDOUT)
+  config.logger.formatter = config.log_formatter
+  config.log_level = :warn  # Adjust log level as needed
 
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'theodinbook.fly.dev',
-    user_name:            Rails.application.credentials.gmail[:user_name],
-    password:             Rails.application.credentials.gmail[:app_password],
-    authentication:       'plain',
-    enable_starttls_auto: true
-  }
+  if Rails.application.credentials.gmail.present?
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'theodinbook.fly.dev',
+      user_name:            Rails.application.credentials.gmail[:user_name],
+      password:             Rails.application.credentials.gmail[:app_password],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+  else
+    config.logger.warn "Gmail credentials are not set properly"
+  end
+
 
   config.action_mailer.perform_deliveries = true
 end
