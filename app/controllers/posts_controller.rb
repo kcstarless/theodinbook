@@ -29,19 +29,16 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: "Posted created successfully."
     else
-      render :new
+      flash.now[:alert] = @post.errors.full_messages.to_sentence.capitalize
+      render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-
   end
 
   def update
     if @post.update(post_params)
       redirect_to posts_path, notice: "Post updated successfully."
     else
-      render :edit
+      render :new, status: :unprocessable_entity
     end
   end
 

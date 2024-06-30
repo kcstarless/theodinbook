@@ -1,10 +1,6 @@
 .form {
-    display: flex;
-    // flex-direction: column;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
 
-  
+
     &__group {
       flex: 1;
       padding-bottom: var(--space-l)

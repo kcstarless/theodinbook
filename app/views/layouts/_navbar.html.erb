@@ -1,13 +1,13 @@
 <section class="navbar">
         <div class="brand">
-            <a href="#!"><%= image_tag("odin_brand2.png", class: "image image--brand") %>Odinbook</a>
+            <a href="<%= posts_path %>"><%= image_tag("odin_brand2.png", class: "image image--brand") %>Odinbook</a>
         </div>
 
         <nav>
             <ul>
                 <% if user_signed_in? %>
                     <div class="navbar_menu">
-                        <li><a href="<%= posts_path(user_posts: true) %>">My Posts</a></li>
+                        <li><a href="<%= posts_path %>">Posts</a></li>
                     </div>
                     <div class="navbar_menu">
                         <li><a href="<%= users_path(current_user) %>">All Users</a></li>

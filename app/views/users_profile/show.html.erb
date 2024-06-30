@@ -1,5 +1,4 @@
-<main class="container">
-  <%= link_to sanitize("&larr; Back to post"), posts_path %>
+<div class="container">
   <div class="header">
     <div class="user users">
       <div class="user_container_profile">
@@ -15,7 +14,7 @@
               <% end %>
             <% else %>
               <% if !@user.avatar_url || @user.avatar_url == 'undefined' %>
-                <%= image_tag("avatar/avatar_01.png", class: "image image--profile-icon") %>
+                <%= image_tag("avatars/avatar_01.png", class: "image image--profile-icon") %>
               <% else %>
                 <%= image_tag("#{@user.avatar_url}", class: "image image--profile-icon") %>
               <% end %>
@@ -87,6 +86,6 @@
     <h3><%= image_tag("header_posts2.png", class: "image image--icon-header") %><%= @user.username %>'s posts</h3>
   </div>
   <%= render @posts %>
-</main>
+</div>
 
 

@@ -1,14 +1,9 @@
-<%# New post form %>
+<div class="form">
 <%= simple_form_for post do |f| %>
-  <% if post.errors.any? %>
-    <div class="error-message">
-      <%= post.errors.full_messages.to_sentence.capitalize %>
-    </div>
-  <% end %>
-
   <%= f.input :title, input_html: { autofocus: true, class: 'title' } %>
   <%= f.input :body, input_html: { class: 'body' } %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>
+</div>
 

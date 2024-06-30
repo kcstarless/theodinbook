@@ -89,3 +89,7 @@ gem "omniauth-rails_csrf_protection"
 
 gem "letter_opener", group: :development
 gem 'launchy'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.155", :require => false

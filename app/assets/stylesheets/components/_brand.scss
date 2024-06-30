@@ -1,12 +1,21 @@
 .brand {
-    // float: left;
-    text-transform: uppercase;
-    font-size: var(--font-size-xl);
-    // border: var(--border-dark);
-    align-self: end;
-      
-    a,
-    a:visited {
-      color: var(--color-primary);
-    }
+  text-transform: uppercase;
+  font-size: var(--font-size-xl);
+  align-self: end;
+
+  a,
+  a:visited {
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
   }
+}
+
+.image--brand {
+  transition: transform 0.5s ease-in-out; /* Smooth transition for the spin */
+
+}
+
+.image--brand:hover {
+  transform: rotateY(180deg) translateX(10px); /* Spin the image 180 degrees on the Y-axis */
+}

@@ -21,6 +21,12 @@ User.destroy_all
 User.create(username: 'tom', email: 'tom@example.com', password: '121212')
 User.create(username: 'peter', email: 'peter@example.com', password: '121212')
 User.create(username: 'dave', email: 'dave@example.com', password: '121212')
+User.create(username: 'lance', email: 'lance@example.com', password: '121212')
+User.create(username: 'bill', email: 'bill@example.com', password: '121212')
+User.create(username: 'sam', email: 'sam@example.com', password: '121212')
+User.create(username: 'larry', email: 'larry@example.com', password: '121212')
+User.create(username: 'conan', email: 'conan@example.com', password: '121212')
+User.create(username: 'jeff', email: 'jeff@example.com', password: '121212')
 
 p "created #{User.count} users"
 
