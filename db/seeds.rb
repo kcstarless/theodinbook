@@ -18,15 +18,15 @@ Post.destroy_all
 User.destroy_all
 
 # Create User data
-User.create(username: 'tom', email: 'tom@example.com', password: '121212')
-User.create(username: 'peter', email: 'peter@example.com', password: '121212')
-User.create(username: 'dave', email: 'dave@example.com', password: '121212')
-User.create(username: 'lance', email: 'lance@example.com', password: '121212')
-User.create(username: 'bill', email: 'bill@example.com', password: '121212')
-User.create(username: 'sam', email: 'sam@example.com', password: '121212')
-User.create(username: 'larry', email: 'larry@example.com', password: '121212')
-User.create(username: 'conan', email: 'conan@example.com', password: '121212')
-User.create(username: 'jeff', email: 'jeff@example.com', password: '121212')
+User.create(username: 'tom', email: 'tom@example.com', password: '121212', avatar_url: 'avatars/avatar_01.png')
+User.create(username: 'peter', email: 'peter@example.com', password: '121212', avatar_url: 'avatars/avatar_02.png')
+User.create(username: 'dave', email: 'dave@example.com', password: '121212', avatar_url: 'avatars/avatar_03.png')
+User.create(username: 'lance', email: 'lance@example.com', password: '121212', avatar_url: 'avatars/avatar_03.png')
+User.create(username: 'bill', email: 'bill@example.com', password: '121212', avatar_url: 'avatars/avatar_04.png')
+User.create(username: 'sam', email: 'sam@example.com', password: '121212', avatar_url: 'avatars/avatar_05.png')
+User.create(username: 'larry', email: 'larry@example.com', password: '121212', avatar_url: 'avatars/avatar_06.png')
+User.create(username: 'conan', email: 'conan@example.com', password: '121212', avatar_url: 'avatars/avatar_07.png')
+User.create(username: 'jeff', email: 'jeff@example.com', password: '121212', avatar_url: 'avatars/avatar_08.png')
 
 p "created #{User.count} users"
 
@@ -43,15 +43,21 @@ end
 
 p "created #{Post.count} posts"
 
-# Create flight data
-# Users.each_with_index do |departure_User, index|
-#   next_Use = Uses[(index + 1) % Uses.size] # Ensures arrival Use is different
-#   10.times do
-#     Flight.create(departure_User: departure_User,
-#                   arrival_User: next_Use,
-#                   flight_date_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
-#                   flight_duration: Faker::Number.between(from: 60, to: 720))
-#   end
-# end
+# Create comments
+Post.all.each do |post|
+  rand(1..5).times do
+    Comment.create(
+      body: Faker::Lorem.sentence,
+      post_id: post.id,
+      user_id: User.pluck(:id).sample
+    )
+  end
+end
 
-# p "created #{Flight.count} flights"
+p "created #{Comment.count} comments"
+
+User.all.each do |user|
+  Post.all.sample(rand(1..5)).each do |post|
+    Like.find_or_create_by(user: user, post: post)
+  end
+end
