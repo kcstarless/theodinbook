@@ -1,6 +1,7 @@
+
 <div class="post">
-    
-    <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= link_to post.title, post_path(post) %></div>
+<%= turbo_frame_tag "tf_post#{post.id}" do %>
+    <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= link_to post.title, post_path(post), data: { turbo_frame: "tf_post_show" } %></div>
     <div class="post__f1"><%= link_to "@#{post.user.username}", users_profile_path(post.user) %></div>
     <div class="post__f1">
         <% if current_user.liked_post?(post) %>
@@ -10,6 +11,8 @@
         <% end %>
         <span class="post__liked_count"><%= post.likes_count %></span>
     </div>
+<% end %>
+
     <div class="post__actions">
 
         <% if false %>
@@ -23,6 +26,40 @@
                                 class: "btn" %>
             <% end %>
         <% end %>
-
     </div>
+    
 </div>
+
+
+<div class="post">
+<%= turbo_frame_tag "tf_post#{post.id}" do %>
+    <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= link_to post.title, post_path(post), data: { turbo_frame: "tf_post_show" } %></div>
+    <div class="post__f1"><%= link_to "@#{post.user.username}", users_profile_path(post.user) %></div>
+    <div class="post__f1">
+        <% if current_user.liked_post?(post) %>
+            <%= image_tag("odin_liked.png", class: "image image--icon-list") %>
+        <% else %>
+            <%= image_tag("odin_likes3.png", class: "image image--icon-list") %>
+        <% end %>
+        <span class="post__liked_count"><%= post.likes_count %></span>
+    </div>
+<% end %>
+
+    <div class="post__actions">
+
+        <% if false %>
+            <% if current_user.id == post.user.id %>
+                <%= link_to "Delete",
+                                post_path(post),
+                                method: :delete,
+                                class: "btn" %>
+                <%= link_to "Edit",
+                                edit_post_path(post),
+                                class: "btn" %>
+            <% end %>
+        <% end %>
+    </div>
+    
+</div>
+
+

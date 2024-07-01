@@ -2,20 +2,12 @@
   text-transform: uppercase;
   font-size: var(--font-size-xl);
   align-self: end;
+  // border: var(--border-dark);
 
   a,
   a:visited {
     color: var(--color-primary);
-    display: flex;
+    // display: flex;
     align-items: center;
   }
-}
-
-.image--brand {
-  transition: transform 0.5s ease-in-out; /* Smooth transition for the spin */
-
-}
-
-.image--brand:hover {
-  transform: rotateY(180deg) translateX(10px); /* Spin the image 180 degrees on the Y-axis */
 }

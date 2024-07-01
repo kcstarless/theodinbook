@@ -1,33 +1,35 @@
 <div class="container">
+  <%= turbo_frame_tag "tf_post#{@post.id}" do %>
   <%= link_to sanitize("&larr; Back to posts"), posts_path %>
 
-  <div class="header header__show">
-    <h2><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h2>
+      <div class="header header__show">
+        <h2><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h2>
 
-    <h4>by @<%= link_to @post.user.username, users_profile_path(user_id: @post.user_id, post_id: @post.id) %></h4>
-    <% if current_user.liked_post?(@post)%>
-      <h5><%= link_to image_tag("odin_liked.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
-    <% else %>
-      <h5><%= link_to image_tag("odin_likes3.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
+        <h4>by @<%= link_to @post.user.username, users_profile_path(user_id: @post.user_id, post_id: @post.id) %></h4>
+        <% if current_user.liked_post?(@post)%>
+          <h5><%= link_to image_tag("odin_liked.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
+        <% else %>
+          <h5><%= link_to image_tag("odin_likes3.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
+        <% end %>
+        <h6>posted on: <%= @post.created_at.strftime("%d-%m-%Y") %></h6>
+      </div>
+
+      <div class="post__post_show">
+        <%= image_tag("odin_post_body.png", class: "image image--postshow") %>
+        <%= @post.body %>
+        <div style="clear: both;"></div> 
+      </div>
+
+      <div class="header header--comments">
+        <h3>Comments</h3> 
+      </div>
+      <div class="container">
+          <ul class="ul ul--comments">
+              <% @comments.each do |comment| %>
+                <li><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y") %></li>
+              <% end %>
+          </ul><br>
+        <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>
+      </div>
     <% end %>
-    <h6>posted on: <%= @post.created_at.strftime("%d-%m-%Y") %></h6>
-  </div>
-
-  <div class="post__post_show">
-    <%= image_tag("odin_post_body.png", class: "image image--postshow") %>
-    <%= @post.body %>
-    <div style="clear: both;"></div> 
-  </div>
-
-  <div class="header header--comments">
-    <h3>Comments</h3> 
-  </div>
-  <div class="container">
-      <ul class="ul ul--comments">
-          <% @comments.each do |comment| %>
-            <li><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y") %></li>
-          <% end %>
-      </ul><br>
-    <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>
-  </div>
 </div>

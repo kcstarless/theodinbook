@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="<%= asset_path('favicon.png') %>">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
@@ -13,7 +13,7 @@
   <body>
     <%= render partial: "layouts/navbar" %>
     <%= render partial: "layouts/flash" %>
-    <%= yield %>
+      <%= yield %>
     <%= render partial: "layouts/footer" %>
   </body>
 </html>

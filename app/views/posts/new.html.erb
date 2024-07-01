@@ -1,9 +1,11 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+  <%= turbo_frame_tag "tf_main" do %>
+    <%= link_to sanitize("&larr; Back to posts"), posts_path %>
 
-  <div class="header">
-    <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>New post</h2>
-  </div>
+    <div class="header">
+      <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>new post</h2>
+    </div>
 
-  <%= render "form", post: @post %>
+    <%= render "form", post: @post %>
+  <% end %>
 </main>
