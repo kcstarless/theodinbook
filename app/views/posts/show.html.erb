@@ -34,7 +34,7 @@
       </summary>
         <ul>
           <% @comments.each do |comment| %>
-            <li><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y") %></li>
+            <li><h5><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %></h5><p><%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y %H:%M") %></p></li>
           <% end %>
         </ul><br>
         <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>

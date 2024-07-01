@@ -14,9 +14,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
     @make_comment = Comment.new
-    # Rails.logger.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXX: #{@comments.inspect}")
   end
 
   def new
