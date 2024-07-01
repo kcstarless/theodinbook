@@ -1,7 +1,8 @@
 
 <%= turbo_frame_tag "tf_post#{post.id}", class: "post" do %>
+<%= link_to post_path(post) do %>
     <div class="post__post_preview">
-    <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= link_to post.title, post_path(post) %></div>
+    <div class="post__f1"><%= image_tag("odin_post_list.png", class: "image image--icon-header") %><%= post.title %></div>
     <div class="post__f1">
         <%= link_to users_profile_path(post.user), class: "profile-link" do %>
             <%= image_tag("#{post.user.avatar_url}", class: "image image--profile-icon-small") %>
@@ -18,7 +19,7 @@
         <span class="post__liked_count"><%= post.likes_count %></span>
         </div>
     </div>
-
+<% end %>
     <div class="post__actions">
 
         <% if false %>
@@ -34,6 +35,7 @@
         <% end %>
     </div>
     </div>
+
 <% end %>
 
 
