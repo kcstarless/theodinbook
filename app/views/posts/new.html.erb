@@ -1,5 +1,4 @@
 <main class="container">
-  <%= turbo_frame_tag "tf_main" do %>
     <%= link_to sanitize("&larr; Back to posts"), posts_path %>
 
     <div class="header">
@@ -7,5 +6,4 @@
     </div>
 
     <%= render "form", post: @post %>
-  <% end %>
 </main>

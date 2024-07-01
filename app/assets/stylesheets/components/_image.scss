@@ -21,7 +21,7 @@
     }
 
     &--icon-list {
-        float:left
+        float:left;
     }
 
     &--postshow {
@@ -44,6 +44,19 @@
         height: 65px;
         // border-radius: 50%;
         object-fit: cover;
+        border: var(--border);
+        background-color: var(--color-white);
+        border-radius: var(--border-radius-round);
+        box-shadow: var(--shadow-small-profile); /* Add shadow */
+    }
+
+    &--profile-icon-small {
+        width: 30px;
+        height: 30px;
+        // border-radius: 50%;
+        // object-fit: cover;
+        float: left;
+        align-self: center;
         border: var(--border);
         background-color: var(--color-white);
         border-radius: var(--border-radius-round);

@@ -1,18 +1,13 @@
 <main class="container">
-    <%= turbo_frame_tag "tf_main" do %>
         <div class="header">
             <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>posts</h2>
             <ul>
                 <li><%= sort_link("recent", "spear_up.png", "recent") %></li>
                 <li><%= sort_link("oldest", "spear_down.png", "oldest") %></li>
                 <li><%= sort_link("likes", "odin_likes3.png", "likes") %></li>
-                <li><%= link_to "New post", new_post_path, class: "btn btn--secondary", data: { turbo_frame: "tf_main" } %></li>
+                <li><%= link_to "New post", new_post_path, class: "btn btn--secondary" %></li>
             </ul>
         </div>  
-
-        <% end %>
-        <%= render @posts %>
-
         
-    
+        <%= render @posts %> 
 </main>

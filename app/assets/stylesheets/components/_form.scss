@@ -1,6 +1,5 @@
 .form {
 
-
     &__group {
       flex: 1;
       padding-bottom: var(--space-l)
@@ -37,5 +36,10 @@
       &--invalid {
         border-color: var(--color-primary);
       }
+    }
+
+    &__input.comments{
+      // width: 200px;
+      resize: none;
     }
   }

@@ -1,11 +1,18 @@
 <div class="container">
   <%= turbo_frame_tag "tf_post#{@post.id}" do %>
-  <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+  <%= link_to sanitize("&darr; close"), posts_path %>
+  <%= render partial: "layouts/flash" %>
 
       <div class="header header__show">
-        <h2><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h2>
+        <h3><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h3>
 
-        <h4>by @<%= link_to @post.user.username, users_profile_path(user_id: @post.user_id, post_id: @post.id) %></h4>
+        <h4>
+        <%= link_to users_profile_path(user_id: @post.user_id, post_id: @post.id), class: "profile-link" do %>
+            <%= image_tag("#{@post.user.avatar_url}", class: "image image--profile-icon-small") %>
+            <span><%= @post.user.username %></span>
+        <% end %>
+        </h5>
+
         <% if current_user.liked_post?(@post)%>
           <h5><%= link_to image_tag("odin_liked.png", class: "image image--icon-list"), liked_post_path(@post), method: :post, data: { turbo_method: :post } %></h5>
         <% else %>
@@ -20,16 +27,20 @@
         <div style="clear: both;"></div> 
       </div>
 
-      <div class="header header--comments">
-        <h3>Comments</h3> 
-      </div>
-      <div class="container">
-          <ul class="ul ul--comments">
-              <% @comments.each do |comment| %>
-                <li><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y") %></li>
-              <% end %>
-          </ul><br>
+  <div class="comments comments">
+    <details>
+      <summary>
+        <h4>comments: &darr; </h4>
+      </summary>
+        <ul>
+          <% @comments.each do |comment| %>
+            <li><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y") %></li>
+          <% end %>
+        </ul><br>
         <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>
-      </div>
+    </details>
+  </div>
+
+    <%= link_to sanitize("&uarr; close"), posts_path, style: 'text-align: right;' %>
     <% end %>
 </div>

@@ -1,12 +1,12 @@
 <%# New comment form %>
-<%= simple_form_for [post, make_comment] do |f| %>
+<%= simple_form_for [post, make_comment], class: "form" do |f| %>
   <% if make_comment.errors.any? %>
     <div class="error-message">
       <%= make_comment.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
-  <%= f.input :body, input_html: { class: 'body' }, label: false %>
+  <%= f.input :body, input_html: { class: 'comments' }, label: false %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>
 
