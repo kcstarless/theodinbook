@@ -1,15 +1,17 @@
 <!-- app/views/layouts/_flash.html.erb -->
 
 <div class="container">
-    <% if notice %>
-        <% flash.each do |key, value| %>
-            <div class="error-message <%= key %>"><%= value %></div>
+    <% if flash.any? %>
+        <% if notice %>
+            <% flash.each do |key, value| %>
+                <div class="success-message <%= key %>"><%= value %></div>
+            <% end %>
+        <% end %>
+
+        <% if alert %>
+            <% flash.each do |key, value| %>
+                <div class="error-message <%= key %>"><%= value %></div>
+            <% end %>
         <% end %>
     <% end %>
-
-    <% if alert %>
-        <div class="alert"><%= alert %></div>
-    <% end %>
-
-
 </div>

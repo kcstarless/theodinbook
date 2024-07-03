@@ -37,6 +37,19 @@
           color: var(--color-dark);
           filter: saturate(1.2) brightness(110%);
         }
+      &--secondary-alt {
+        font-size: var(--space-s);
+        color: var(--color-white);
+        background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));
+    
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+          color: var(--color-dark);
+          filter: saturate(1.2) brightness(110%);
+        }
+      }
       }
 
       &--accept_reject {

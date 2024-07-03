@@ -5,8 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do |resource|
-      Rails.logger.debug "Sending welcome email to #{resource.email}"
-      UserMailer.welcome_email(resource).deliver_later if resource.persisted?
+      if resource.errors.any?
+        flash[:alert] = resource.errors.full_messages.join(', ')
+      else
+        Rails.logger.debug "Sending welcome email to #{resource.email}"
+        UserMailer.welcome_email(resource).deliver_later if resource.persisted?
+      end
     end
   end
 

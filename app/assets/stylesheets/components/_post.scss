@@ -40,7 +40,7 @@
 
     &__post_preview {
       display: grid;
-      grid-template-columns: 0.6fr 0.2fr 0.2fr;
+      grid-template-columns: 0.6fr 0.3fr 0.2fr;
       align-items: center;
       // justify-content: center;
     }
@@ -49,9 +49,17 @@
       align-items: center;
       gap: var(--space-xs);
     }
+    &__actions {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
 
     &__f1{
+      // border: var(--border-dark);
       padding: var(--space-xs);
+      // display: flex;
+      // align-items: center;
   }
     &__details{
       border: var(--border-dark);

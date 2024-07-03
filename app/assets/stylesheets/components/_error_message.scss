@@ -2,7 +2,16 @@
     width: 100%;
     font-size: var(--font-size-s);
     color: var(--color-primary);
-    background-color: var(--color-primary-bg);
+    background-color: var(--color-primary-error);
+    padding: var(--space-xs);
+    border-radius: var(--border-radius);
+  }
+
+  .success-message {
+    width: 100%;
+    font-size: var(--font-size-s);
+    color: var(--color-primary);
+    background-color: var(--color-primary-success);
     padding: var(--space-xs);
     border-radius: var(--border-radius);
   }

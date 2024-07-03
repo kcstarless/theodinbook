@@ -1,3 +1,4 @@
+
 <main class="container">
         <div class="header">
             <h2><%= image_tag("header_posts2.png", class: "image image--icon-header") %>posts</h2>
@@ -8,6 +9,5 @@
                 <li><%= link_to "New post", new_post_path, class: "btn btn--secondary" %></li>
             </ul>
         </div>  
-        
         <%= render @posts %> 
 </main>

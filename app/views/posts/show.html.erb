@@ -7,7 +7,7 @@
         <h3><%= image_tag("odin_post3.png", class: "image image--icon-header") %><%= @post.title %></h3>
 
         <h4>
-        <%= link_to users_profile_path(user_id: @post.user_id, post_id: @post.id), class: "profile-link", data: { turbo: false } do %>
+        <%= link_to users_profile_path(user_id: @post.user_id, post_id: @post.id), class: "profile-link", data: { turbo_frame: "_top" } do %>
             <%= image_tag("#{@post.user.avatar_url}", class: "image image--profile-icon-small") %>
             <span><%= @post.user.username %></span>
         <% end %>
@@ -33,10 +33,11 @@
         <h4>comments: &darr; </h4>
       </summary>
         <ul>
-          <% @comments.each do |comment| %>
-            <li><p><b><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %></b> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y %H:%M") %></p></li>
-          <% end %>
-        </ul><br>
+            <% @comments.each do |comment| %>
+              <li><p><b><%= image_tag('comment_icon.png', class: "image--icon-comment-list") %><%= comment.body %></b> - <%= comment.user.username %>@<%= comment.created_at.strftime("%d-%m-%Y %H:%M") %></p></li>
+            <% end %>
+        </ul>
+        <br>
         <%= render 'comments/comment_form', make_comment: @make_comment, post: @post %>
     </details>
   </div>

@@ -4,6 +4,8 @@
   <div class="header">
     <h1>Edit post</h1>
   </div>
-
-  <%= render "form", post: @post %>
+  <%= turbo_frame_tag "tf_post#{@post.id}" do %>
+    <%= render "form", post: @post %>
+  <% end %>
 </main>
+

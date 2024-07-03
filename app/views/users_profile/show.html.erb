@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header">
+
     <div class="user users">
       <div class="user_container_profile">
-        
         <div class="user_image">
             <% if current_user == @user %>
               <%= link_to edit_avatar_users_profile_path do %>
@@ -85,7 +85,6 @@
   <div class="header">
     <h3><%= image_tag("header_posts2.png", class: "image image--icon-header") %><%= @user.username %>'s posts</h3>
   </div>
+
   <%= render @posts %>
 </div>
-
-

@@ -1,5 +1,5 @@
 <%# New comment form %>
-<%= simple_form_for [post, make_comment], class: "form" do |f| %>
+<%= simple_form_for [post, make_comment], class: "form", data: { turbo_frame: "comments" } do |f| %>
   <% if make_comment.errors.any? %>
     <div class="error-message">
       <%= make_comment.errors.full_messages.to_sentence.capitalize %>

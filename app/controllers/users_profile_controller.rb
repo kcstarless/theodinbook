@@ -5,6 +5,8 @@ class UsersProfileController < ApplicationController
   # before_action :set_pending_reqeust, only: [:show]
 
   def show
+    @user_viewing = current_user.id == @user.id
+
     @posts = @user.posts  # all users post
 
     if current_user.id != @user.id  # check if profile is current users profile
@@ -23,7 +25,7 @@ class UsersProfileController < ApplicationController
 
   def update_avatar
     @user = current_user
-    # Rails.logger.info("Avatar URL received (before check): #{params[:user][:avatar_url]}")
+    # Rails.logger.info("Avatar URL #{params[:user][:avatar_url]}")
     if params[:user][:avatar].present?
       @user.avatar.purge if @user.avatar.attached?
       @user.avatar.attach(params[:user][:avatar])

@@ -35,7 +35,12 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "Post updated successfully."
+      # redirect_to users_profile_path(current_user), notice: "Post updated successfully."
+      flash.now[:notice] = "Post successfully created."
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("tf_post#{@post.id}", partial: "posts/post", locals: { post: @post}) }
+        format.html { redirect_to users_profile_path(current_user) }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +48,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to quotes_path, notice: "Post was successfully deleted."
+
+    respond_to do |format|
+      format.html { redirect_to posts_path, notice: "Post was successfully deleted." }
+      format.turbo_stream
+    end
   end
 
   private

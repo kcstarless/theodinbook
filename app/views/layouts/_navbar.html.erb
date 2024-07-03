@@ -10,10 +10,10 @@
                         <li><a href="<%= posts_path %>">Posts</a></li>
                     </div>
                     <div class="navbar_menu">
-                        <li><a href="<%= users_path(current_user) %>">All Users</a></li>
+                        <li><%= link_to "All Users", users_path %></li>
                     </div>      
                     <div class="navbar_menu">
-                        <li><a href="<%= users_profile_path(user_id: current_user.id) %>">welcome@<%= current_user.username %></a></li>
+                        <li><%= link_to "welcome@#{current_user.username}", users_profile_path(user_id: current_user.id) %></li>
                         <li><a href="<%= destroy_user_session_path %>" data-turbo-method="delete">logout</a></li>
                     </div>
                 <% else %>
