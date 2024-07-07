@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: 'Comment created successfully.'
     else
-      redirect_to @post, notice: 'Comment must not be empty.'
+      redirect_to @post, alert: 'Comment must not be empty.'
     end
   end
 

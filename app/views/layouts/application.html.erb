@@ -12,7 +12,9 @@
   <body>
     <%= render partial: "layouts/navbar" %>
     
+  <turbo-frame id="flash">
     <%= render partial: "layouts/flash" %>
+  </turbo-frame>
 
       <%= yield %>
 

@@ -1,17 +1,29 @@
 <!-- app/views/layouts/_flash.html.erb -->
-
 <div class="container">
-    <% if flash.any? %>
+
         <% if notice %>
             <% flash.each do |key, value| %>
-                <div class="success-message <%= key %>"><%= value %></div>
+                <div class="success-message <%= key %>"><%= value %><span class="close-button">&times;</span></div>
             <% end %>
         <% end %>
 
         <% if alert %>
             <% flash.each do |key, value| %>
-                <div class="error-message <%= key %>"><%= value %></div>
+                <div class="error-message <%= key %>"><%= value %><span class="close-button">&times;</span></div>
             <% end %>
         <% end %>
-    <% end %>
+
+        <% unless current_user %>
+            <div class="error-message">
+                <span class="close-button">&times;</span>
+                Notice:<br>
+                - For demonstration purpose you can use following credentials:<br>
+                    username: dave@example.com.<br>
+                    password: 121212.<br>
+                - Feel free to create an account or alternatively through gmail or github.<br>
+                - DB is purged every 24hours/no user information is kept.<br>
+            </div>
+            
+        <% end %>
+
 </div>

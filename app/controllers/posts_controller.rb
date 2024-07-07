@@ -35,16 +35,24 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      # @updated = true
       # redirect_to users_profile_path(current_user), notice: "Post updated successfully."
-      flash.now[:notice] = "Post successfully created."
+      # flash.now[:notice] = "Post updated successfully."
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("tf_post#{@post.id}", partial: "posts/post", locals: { post: @post}) }
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace("tf_post#{@post.id}", partial: "posts/post", locals: { post: @post}) }
+        format.turbo_stream { flash.now[:notice] = "Post was successfully updated." }
         format.html { redirect_to users_profile_path(current_user) }
       end
     else
-      render :new, status: :unprocessable_entity
+      # @updated = false
+      respond_to do |format|
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace("tf_post#{@post.id}", partial: "posts/post", locals: { post: @post}) }
+        format.turbo_stream { flash.now[:alert] = "Title or body can not be empty." }
+        format.html { redirect_to users_profile_path(current_user) }
+      end
     end
   end
+
 
   def destroy
     @post.destroy

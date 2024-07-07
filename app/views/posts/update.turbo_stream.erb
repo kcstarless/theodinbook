@@ -1,0 +1,3 @@
+
+<%= turbo_stream.replace "tf_post#{@post.id}", partial: "posts/post", locals: { post: @post} %>
+<%= turbo_stream.prepend "flash#{@post.id}", partial: "layouts/flash" %>
